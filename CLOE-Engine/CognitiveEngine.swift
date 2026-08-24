@@ -22,6 +22,8 @@ final class CognitiveEngine: ObservableObject {
     
     @Published var score: Double = 0.0
     
+    @Published var isFoveatedReadingActive: Bool = false
+    
     
     var currentMode: CLOE_Mode {
         switch score {
