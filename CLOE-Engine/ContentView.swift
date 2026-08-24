@@ -12,11 +12,11 @@ struct ContentView: View {
     
     var body: some View {
         HSplitView {
-            // Zona principală adaptivă
+            // Main adaptive workspace area
             WorkspaceArea(score: engine.score, mode: engine.currentMode)
                 .frame(minWidth: 550, minHeight: 450)
             
-            // Panou de control / simulare biometrică
+            // Biometric simulation & control sidebar
             DebugSidebar(engine: engine)
                 .frame(width: 260)
         }
@@ -42,12 +42,12 @@ struct WorkspaceArea: View {
                         .scaleEffect(1.25)
                         .animation(.easeInOut(duration: 3).repeatForever(autoreverses: true), value: score)
                     
-                    Text("Capacitate cognitivă depășită")
+                    Text("Cognitive Capacity Exceeded")
                         .font(.title2)
                         .fontWeight(.semibold)
                         .foregroundColor(.white)
                     
-                    Text("Pauză de reglare neuronală: respiră adânc.")
+                    Text("Neural recovery phase: breathe deeply.")
                         .font(.caption)
                         .foregroundColor(.gray)
                 }
@@ -55,20 +55,20 @@ struct WorkspaceArea: View {
                 VStack(alignment: .leading, spacing: 20) {
                     if score < 0.35 {
                         HStack {
-                            Text("CAPITOLUL 1 • TEORIA SARCINII COGNITIVE")
+                            Text("CHAPTER 1 • COGNITIVE LOAD THEORY")
                             Spacer()
-                            Text("PRIORITATE MAXIMĂ")
+                            Text("HIGH PRIORITY")
                         }
                         .font(.caption2)
                         .foregroundColor(.secondary)
                         .transition(.opacity.combined(with: .move(edge: .top)))
                     }
                     
-                    Text("Arhitectura Sistemelor Adaptive")
+                    Text("Adaptive Interface Architecture")
                         .font(.system(size: 22 + CGFloat(score * 8), weight: .bold))
                         .foregroundColor(score > 0.70 ? .white : .primary)
                     
-                    Text("CLOE analizează degradarea atenției și reduce zgomotul vizual în timp real. Pe măsură ce scorul crește, elementele periferice sunt eliminate, contrastul este forțat, iar tipografia este scalată pentru a reduce efortul de procesare al cortexului vizual.")
+                    Text("CLOE analyzes attention decay and reduces visual clutter in real-time. As the cognitive score rises, peripheral elements dissolve, contrast increases, and typography scales up dynamically to reduce visual cortex processing strain.")
                         .font(.system(size: 14 + CGFloat(score * 5)))
                         .lineSpacing(5 + CGFloat(score * 8))
                         .foregroundColor(score > 0.70 ? .white.opacity(0.9) : .primary)
@@ -91,7 +91,7 @@ struct DebugSidebar: View {
                 .font(.headline)
             
             VStack(alignment: .leading, spacing: 4) {
-                Text("Stare sistem:")
+                Text("System State:")
                     .font(.caption)
                     .foregroundColor(.secondary)
                 Text(engine.currentMode.rawValue)
@@ -102,7 +102,7 @@ struct DebugSidebar: View {
             Divider()
             
             VStack(alignment: .leading, spacing: 8) {
-                Text("Scor Sarcină Cognitivă: \(Int(engine.score * 100))%")
+                Text("Simulated Cognitive Load: \(Int(engine.score * 100))%")
                     .font(.caption)
                     .fontWeight(.medium)
                 
